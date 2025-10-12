@@ -1,0 +1,12 @@
+easy_admin:
+    entities:
+        Product:
+            label: 'Товар'
+            plural_label: 'Товары'
+            menu_label: 'Товары'
+            menu_icon: 'fa fa-shopping-cart'
+        Dashboard:
+            label: 'Панель управления'
+            menu_label: 'Панель управления'
+            menu_icon: 'fa fa-home'
+

@@ -1,0 +1,28 @@
+{% if field.value is not empty %}
+    <div class="order-items">
+        <h4>Позиции заказа</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Сумма</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in field.value %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price|number_format(2, ',', ' ') }} ₽</td>
+                        <td>{{ (item.quantity * item.price)|number_format(2, ',', ' ') }} ₽</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p class="text-muted">Позиции заказа не добавлены</p>
+{% endif %}
+

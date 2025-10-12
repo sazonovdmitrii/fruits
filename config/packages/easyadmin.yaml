@@ -1,0 +1,20 @@
+easy_admin:
+    site_name: 'Административная панель'
+    default_locale: 'ru'
+    formats:
+        date: 'd.m.Y'
+        time: 'H:i'
+        datetime: 'd.m.Y H:i'
+    design:
+        brand_color: 'primary'
+        form_theme: 'horizontal'
+    entities:
+        Product:
+            label: 'Товар'
+            plural_label: 'Товары'
+        Order:
+            label: 'Заказ'
+            plural_label: 'Заказы'
+        OrderItem:
+            label: 'Позиция заказа'
+            plural_label: 'Позиции заказов'

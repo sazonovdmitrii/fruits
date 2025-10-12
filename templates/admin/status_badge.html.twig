@@ -1,0 +1,8 @@
+{% if field.value is not empty %}
+    {% set status = field.value %}
+    {% set statusClass = 'badge-' ~ status.getColor() %}
+    <span class="badge {{ statusClass }}">{{ status.getLabel() }}</span>
+{% else %}
+    <span class="badge badge-secondary">Неизвестно</span>
+{% endif %}
+
