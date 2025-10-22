@@ -1,0 +1,42 @@
+<!-- breadcrumb section start -->
+<section class="breadcrumb_sec_1 position-relative">
+    <div class="breadcrumb_wrap sec_space_mid_small"
+        style="background-image: url({{ asset('assets/images/breadcrumb/breadcrumb1.png') }});">
+        <div class="breadcrumb_cont text-center">
+            <div class="breadcrumb_title">
+                <h2 class="text-white">{{ title|default('Наши продукты') }}</h2>
+            </div>
+            
+            <!-- Desktop breadcrumbs -->
+            <ul class="list-unstyled breadcrumb_item d-none d-md-flex justify-content-center align-items-center text-white">
+                <li><a href="{{ path('home') }}"><i class="fas fa-home active"></i>Главная</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li><a href="{{ path('categories') }}">Каталог</a></li>
+                {% if category %}
+                    <li><i class="fas fa-chevron-right"></i></li>
+                    <li><a href="{{ path('category_show', {'id': category.id}) }}">{{ category.name }}</a></li>
+                {% endif %}
+                {% if product %}
+                    <li><i class="fas fa-chevron-right"></i></li>
+                    <li>{{ product.name }}</li>
+                {% endif %}
+            </ul>
+            
+            <!-- Mobile breadcrumbs - compact version -->
+            <ul class="list-unstyled breadcrumb_item d-flex d-md-none justify-content-center align-items-center text-white">
+                <li><a href="{{ path('home') }}"><i class="fas fa-home"></i></a></li>
+                <li><i class="fas fa-chevron-right mx-2"></i></li>
+                <li><a href="{{ path('categories') }}">Каталог</a></li>
+                {% if category %}
+                    <li><i class="fas fa-chevron-right mx-2"></i></li>
+                    <li><a href="{{ path('category_show', {'id': category.id}) }}">{{ category.name|slice(0, 10) }}{% if category.name|length > 10 %}...{% endif %}</a></li>
+                {% endif %}
+                {% if product %}
+                    <li><i class="fas fa-chevron-right mx-2"></i></li>
+                    <li>{{ product.name|slice(0, 15) }}{% if product.name|length > 15 %}...{% endif %}</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb section end -->

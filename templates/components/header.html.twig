@@ -1,0 +1,190 @@
+<!-- header section start -->
+<header class="header_section header_1">
+    <!-- top header start -->
+    <div class="top_header_main d-none d-sm-block">
+        <div class="container">
+            <div class="header_top d-flex align-items-center justify-content-between">
+                <div class="header_top_content d-flex pt-2">
+                    <div class="mail_text_content d-flex">
+                        <p class="mail_icon"><span><i class="far fa-envelope text-white pe-2"></i></span></p>
+                        <p class="mail_text">info@organicfruits.ru</p>
+                    </div>
+                    <div class="address_text_content d-flex">
+                        <p class="mail_icon"><span><i class="fas fa-map-marker-alt text-white pe-2"></i></span></p>
+                        <p class="address_text">Краснодар, ул. Красная, 2</p>
+                    </div>
+                </div>
+                <div class="header_top_socials pt-2">
+                    <ul class="list-unstyled d-flex">
+                        <li><a href="#!"><i class="fab fa-facebook-f text-white pe-3"></i></a></li>
+                        <li><a href="#!"><i class="fab fa-twitter text-white pe-3"></i></a></li>
+                        <li><a href="#!"><i class="fab fa-instagram text-white pe-3"></i></a></li>
+                        <li><a href="#!"><i class="fab fa-linkedin-in text-white"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top header end -->
+
+    <!-- bottom header start -->
+    <div class="header_bottom_main">
+        <div class="container">
+            <!-- web menubar start-->
+            <div class="webMenu d-none d-lg-block position-relative">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand position-relative" href="{{ path('home') }}">
+                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav main_menu_list m-auto after_navbar">
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="#!">О нас</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="#!">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbar_user me-2">
+                        <div class="navbar_user_icon">
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="pe-3">
+                                    <button class="main_search_btn" data-bs-toggle="collapse"
+                                        data-bs-target="#main_search_collapse" aria-expanded="false"
+                                        aria-controls="main_search_collapse">
+                                        <i class="search_icon fas fa-search"></i>
+                                        <i class="search_close fas fa-times"></i>
+                                    </button>
+                                </li>
+                                <li class="pe-2 position-relative">
+                                    <a href="#collapseExample" data-bs-toggle="collapse" href="#collapseExample"
+                                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="far fa-user" data-toggle="collapse" role="button"
+                                            data-target="#use_deropdown" aria-expanded="false"
+                                            aria-controls="use_deropdown"></i>
+                                    </a>
+                                </li>
+                                <li class="pe-2"><a href="#!"><i class="far fa-heart"></i></a></li>
+                                <li>
+                                    <a href="{{ path('cart_show') }}">
+                                        <i class="fas fa-shopping-bag position-relative"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                                            0
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- web menubar end-->
+            
+            <!-- mobile menubar start -->
+            <div class="mobileMenu d-block d-lg-none">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="{{ path('home') }}">
+                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                    </a>
+                    
+                    <!-- Mobile header icons -->
+                    <div class="mobile-header-icons d-flex align-items-center">
+                        <div class="mobile_icons me-3">
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="pe-2">
+                                    <button class="main_search_btn" data-bs-toggle="collapse"
+                                        data-bs-target="#main_search_collapse" aria-expanded="false"
+                                        aria-controls="main_search_collapse">
+                                        <i class="search_icon fas fa-search"></i>
+                                    </button>
+                                </li>
+                                <li class="pe-2">
+                                    <a href="{{ path('cart_show') }}">
+                                        <i class="fas fa-shopping-bag position-relative">
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count-mobile">
+                                                0
+                                            </span>
+                                        </i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close mobile_menu_close text-reset"
+                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav main_menu_list m-auto">
+                                <li class="nav-item pe-4">
+                                    <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                </li>
+                                <li class="nav-item pe-4">
+                                    <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                </li>
+                                <li class="nav-item pe-4">
+                                    <a class="nav-link" href="#!">О нас</a>
+                                </li>
+                                <li class="nav-item pe-4">
+                                    <a class="nav-link" href="#!">Контакты</a>
+                                </li>
+                            </ul>
+                            <div class="mobile_menu_icons mt-4">
+                                <ul class="list-unstyled d-flex justify-content-center">
+                                    <li class="pe-3">
+                                        <button class="main_search_btn" data-bs-toggle="collapse"
+                                            data-bs-target="#main_search_collapse" aria-expanded="false"
+                                            aria-controls="main_search_collapse">
+                                            <i class="search_icon fas fa-search"></i>
+                                        </button>
+                                    </li>
+                                    <li class="pe-3">
+                                        <a href="#!">
+                                            <i class="far fa-user"></i>
+                                        </a>
+                                    </li>
+                                    <li class="pe-3">
+                                        <a href="#!">
+                                            <i class="far fa-heart"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('cart_show') }}">
+                                            <i class="fas fa-shopping-bag position-relative">
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count-mobile">
+                                                    0
+                                                </span>
+                                            </i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- mobile menubar end -->
+        </div>
+    </div>
+    <!-- bottom header end -->
+</header>
+<!-- header section end -->
