@@ -1,0 +1,81 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron">
+            <h1 class="display-4">Добро пожаловать в админ-панель!</h1>
+            <p class="lead">Управляйте товарами, категориями и заказами вашего интернет-магазина.</p>
+            <hr class="my-4">
+            <p>Используйте меню слева для навигации по разделам админ-панели.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Товары</h4>
+                        <p class="card-text">Управление каталогом</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-shopping-cart fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Категории</h4>
+                        <p class="card-text">Управление категориями</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-list fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Заказы</h4>
+                        <p class="card-text">Управление заказами</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-file-text fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Изображения</h4>
+                        <p class="card-text">Управление изображениями</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-image fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

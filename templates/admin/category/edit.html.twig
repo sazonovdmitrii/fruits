@@ -1,0 +1,85 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Редактировать категорию - Админ панель{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Редактировать категорию: {{ category.name }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{{ path('admin_category_index') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Назад к списку
+        </a>
+    </div>
+</div>
+
+{{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Основная информация</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Изображение категории</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        {{ form_label(form.imageFile) }}
+                        {{ form_widget(form.imageFile, {'attr': {'onchange': 'previewImage(this, "preview")'}}) }}
+                        {{ form_errors(form.imageFile) }}
+                    </div>
+                    <div class="text-center">
+                        {% if category.image %}
+                            <p class="text-muted mb-2">Текущее изображение:</p>
+                            <img src="{{ asset('uploads/categories/' ~ category.image) }}" alt="{{ category.name }}" class="image-preview mb-2">
+                        {% endif %}
+                        <img id="preview" class="image-preview" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-end">
+                <a href="{{ path('admin_category_index') }}" class="btn btn-secondary me-2">Отмена</a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Сохранить категорию
+                </button>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}
+
+<script>
+function previewImage(input, previewId) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const preview = document.getElementById(previewId);
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+{% endblock %}

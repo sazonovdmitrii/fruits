@@ -1,0 +1,649 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} - Organic Fruits{% endblock %}
+
+{% block body %}
+<!-- body wrap start -->
+<div class="body-wrap overflow-hidden">
+    <!-- back-to-top start -->
+    <div class="back-to-top">
+        <a href="#!"><i class="fas fa-arrow-up"></i></a>
+    </div>
+    <!-- back-to-top end -->
+
+    <!-- header section start -->
+    <header class="header_section header_1">
+        <!-- top header start -->
+        <div class="top_header_main d-none d-sm-block">
+            <div class="container">
+                <div class="header_top d-flex align-items-center justify-content-between">
+                    <div class="header_top_content d-flex pt-2">
+                        <div class="mail_text_content d-flex">
+                            <p class="mail_icon"><span><i class="far fa-envelope text-white pe-2"></i></span></p>
+                            <p class="mail_text">info@organicfruits.ru</p>
+                        </div>
+                        <div class="address_text_content d-flex">
+                            <p class="mail_icon"><span><i class="fas fa-map-marker-alt text-white pe-2"></i></span></p>
+                            <p class="address_text">Краснодар, ул. Красная, 2</p>
+                        </div>
+                    </div>
+                    <div class="header_top_socials pt-2">
+                        <ul class="list-unstyled d-flex">
+                            <li><a href="#!"><i class="fab fa-facebook-f text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-twitter text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-instagram text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-linkedin-in text-white"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top header end -->
+
+        <!-- bottom header start -->
+        <div class="header_bottom_main">
+            <div class="container">
+                <!-- web menubar start-->
+                <div class="webMenu d-none d-lg-block position-relative">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand position-relative" href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav main_menu_list m-auto after_navbar">
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="#!">О нас</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="#!">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar_user me-2">
+                            <div class="navbar_user_icon">
+                                <ul class="list-unstyled d-flex mb-0">
+                                    <li class="pe-3">
+                                        <button class="main_search_btn" data-bs-toggle="collapse"
+                                            data-bs-target="#main_search_collapse" aria-expanded="false"
+                                            aria-controls="main_search_collapse">
+                                            <i class="search_icon fas fa-search"></i>
+                                            <i class="search_close fas fa-times"></i>
+                                        </button>
+                                    </li>
+                                    <li class="pe-2 position-relative">
+                                        <a href="#collapseExample" data-bs-toggle="collapse" href="#collapseExample"
+                                            role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="far fa-user" data-toggle="collapse" role="button"
+                                                data-target="#use_deropdown" aria-expanded="false"
+                                                aria-controls="use_deropdown"></i>
+                                        </a>
+                                    </li>
+                                    <li class="pe-2"><a href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li>
+                                        <a href="{{ path('cart_show') }}">
+                                            <i class="fas fa-shopping-bag position-relative"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                                                0
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- web menubar end-->
+                
+                <!-- mobile menubar start -->
+                <div class="mobileMenu d-block d-lg-none">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                            <div class="offcanvas-header">
+                                <button type="button" class="btn-close mobile_menu_close text-reset"
+                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav main_menu_list m-auto">
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="#!">О нас</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="#!">Контакты</a>
+                                    </li>
+                                </ul>
+                                <div class="mobile_menu_icons mt-4">
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                        <li class="pe-3">
+                                            <button class="main_search_btn" data-bs-toggle="collapse"
+                                                data-bs-target="#main_search_collapse" aria-expanded="false"
+                                                aria-controls="main_search_collapse">
+                                                <i class="search_icon fas fa-search"></i>
+                                            </button>
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="#!">
+                                                <i class="far fa-user"></i>
+                                            </a>
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="#!">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('cart_show') }}">
+                                                <i class="fas fa-shopping-bag position-relative">
+                                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count-mobile">
+                                                        0
+                                                    </span>
+                                                </i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- mobile menubar end -->
+            </div>
+        </div>
+        <!-- bottom header end -->
+    </header>
+    <!-- header section end -->
+
+    <!-- main body start -->
+    <main class="main_body">
+        <!-- breadcrumb section start -->
+        <section class="breadcrumb_sec_1 position-relative">
+            <div class="breadcrumb_wrap sec_space_mid_small"
+                style="background-image: url({{ asset('assets/images/breadcrumb/breadcrumb1.png') }});">
+                <div class="breadcrumb_cont text-center">
+                    <div class="breadcrumb_title">
+                        <h2 class="text-white">{{ product.name }}</h2>
+                    </div>
+                    <ul class="list-unstyled breadcrumb_item d-flex justify-content-center align-items-center text-white">
+                        <li><a href="{{ path('home') }}"><i class="fas fa-home active"></i>Главная</a></li>
+                        <li><i class="fas fa-chevron-right"></i></li>
+                        <li><a href="{{ path('categories') }}">Каталог</a></li>
+                        <li><i class="fas fa-chevron-right"></i></li>
+                        {% if product.category %}
+                            <li><a href="{{ path('category_show', {'id': product.category.id}) }}">{{ product.category.name }}</a></li>
+                            <li><i class="fas fa-chevron-right"></i></li>
+                        {% endif %}
+                        <li>{{ product.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb section end -->
+
+        <!-- product-10 section start -->
+        <section class="product10_sec sec_space_small">
+            <div class="product10_wrap">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 position-relative">
+                            <div class="product10_thumb img_moving_anim1 position-relative d-flex justify-content-center align-items-center">
+                                {% if product.mainImage %}
+                                    <img src="{{ asset('uploads/products/' ~ product.mainImage.filename) }}" alt="{{ product.name }}">
+                                {% else %}
+                                    {% if product.category.name == 'Апельсины' %}
+                                        <img src="{{ asset('assets/images/product/product2.png') }}" alt="{{ product.name }}">
+                                    {% elseif product.category.name == 'Яблоки' %}
+                                        <img src="{{ asset('assets/images/product/product1.png') }}" alt="{{ product.name }}">
+                                    {% elseif product.category.name == 'Бананы' %}
+                                        <img src="{{ asset('assets/images/product/product3.png') }}" alt="{{ product.name }}">
+                                    {% elseif product.category.name == 'Виноград' %}
+                                        <img src="{{ asset('assets/images/product/product4.png') }}" alt="{{ product.name }}">
+                                    {% elseif product.category.name == 'Груши' %}
+                                        <img src="{{ asset('assets/images/product/product5.png') }}" alt="{{ product.name }}">
+                                    {% elseif product.category.name == 'Клубника' %}
+                                        <img src="{{ asset('assets/images/product/product6.png') }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img src="{{ asset('assets/images/product/product1.png') }}" alt="{{ product.name }}">
+                                    {% endif %}
+                                {% endif %}
+                                <div class="product10_back_thumb1 position-absolute">
+                                    {% if product.category.name == 'Апельсины' %}
+                                        <img src="{{ asset('assets/images/product/product3.png') }}" alt="image_not_found">
+                                    {% elseif product.category.name == 'Яблоки' %}
+                                        <img src="{{ asset('assets/images/product/product2.png') }}" alt="image_not_found">
+                                    {% elseif product.category.name == 'Бананы' %}
+                                        <img src="{{ asset('assets/images/product/product4.png') }}" alt="image_not_found">
+                                    {% else %}
+                                        <img src="{{ asset('assets/images/product/product2.png') }}" alt="image_not_found">
+                                    {% endif %}
+                                </div>
+                                <div class="product10_back_thumb2 position-absolute">
+                                    <img src="{{ asset('assets/images/shapes/shape24.png') }}" alt="image_not_found">
+                                </div>
+                            </div>
+                            <div class="row align-items-center sec_top_space_70">
+                                <div class="col-lg-6">
+                                    <!-- product category media player -->
+                                    <div class="product10_video_player">
+                                        <div class="product10_media_thumb position-relative">
+                                            <img class="position-relative" src="{{ asset('assets/images/product/product20.png') }}" alt="image_not_found">
+                                            <div class="product10_media_cont position-absolute d-flex flex-column align-items-center justify-content-center">
+                                                <a class="product10_media_icon" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                                                    <i class="fas fa-play text-white"></i>
+                                                </a>
+                                                <a class="product10_media_title text-center text-white text-uppercase" href="#!">Demo Video 1:30</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <iframe width="450" height="300" src="https://www.youtube.com/embed/UqyD2PgOw9Q" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h3 class="product10_title">Как мы выращиваем органические продукты</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="rating_wrap d-flex justify-content-between">
+                                <div class="rating_review_cont d-flex d-flex align-items-center">
+                                    <ul class="rating_star ul_li">
+                                        <li class="active"><i class="fas fa-star"></i></li>
+                                        <li class="active"><i class="fas fa-star"></i></li>
+                                        <li class="active"><i class="fas fa-star"></i></li>
+                                        <li class="active"><i class="fas fa-star"></i></li>
+                                        <li><i class="far fa-star"></i></li>
+                                    </ul>
+                                    <a href="#!" class="review">Прочитано 3 отзыва</a>
+                                </div>
+                                <div class="product_btn">
+                                    <a href="#">
+                                        <button type="button" class="btn custom_btn rounded-pill px-4 text-white">
+                                            {% if product.category %}{{ product.category.name }}{% else %}Фрукты{% endif %}
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <h2 class="product_detail_title">{{ product.name }}</h2>
+                            <p class="product_detail_desc py-2">{{ product.description ?: 'Свежие органические продукты высшего качества, выращенные с заботой о природе и вашем здоровье.' }}</p>
+                            <div class="row mt-5">
+                                <div class="col-lg-4">
+                                    <div class="product10_content_wrap">
+                                        <h4 class="content_title mb-3">Состав</h4>
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <a class="content_item d-flex justify-content-center align-items-center" href="#!">
+                                                    <img src="{{ asset('assets/images/product/product33.png') }}" alt="image_not_found">
+                                                </a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a class="content_item d-flex justify-content-center align-items-center" href="#!">
+                                                    <img src="{{ asset('assets/images/product/product32.png') }}" alt="image_not_found">
+                                                </a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a class="content_item d-flex justify-content-center align-items-center" href="#!">
+                                                    <img src="{{ asset('assets/images/product/product35.png') }}" alt="image_not_found">
+                                                </a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a class="content_item d-flex justify-content-center align-items-center" href="#!">
+                                                    <img src="{{ asset('assets/images/product/product34.png') }}" alt="image_not_found">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="product10_value_content">
+                                        <h4 class="value_title mb-3">Пищевая ценность:</h4>
+                                        <div class="product10_value_table">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">50Г</th>
+                                                        <td>Углеводы</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">10Г</th>
+                                                        <td>Белки, Энергия</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">20Г</th>
+                                                        <td>Минералы и витамины</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">90Г</th>
+                                                        <td>Потребности в питательных веществах</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product10_quantity_btn_wrap d-flex align-items-center">
+                                <div class="quantity_input">
+                                    <form action="#">
+                                        <span class="input_number_decrement">–</span>
+                                        <input class="input_number" value="2КГ">
+                                        <span class="input_number_increment">+</span>
+                                    </form>
+                                </div>
+                                <button type="button" class="btn custom_btn rounded-pill ms-3 px-5 py-3 text-white" id="add-to-cart-btn" data-product-id="{{ product.id }}">
+                                    Заказать сейчас <i class="fas fa-long-arrow-alt-right"></i>
+                                </button>
+                            </div>
+                            <div class="product_tags_wrap d-flex align-items-center mt-5">
+                                <h6 class="product_tags_title text-uppercase">теги:</h6>
+                                <div class="tags_item d-flex align-items-center">
+                                    <a href="#!">Органические,</a>
+                                    <a class="ms-1" href="#!">Свежие,</a>
+                                    <a class="ms-1" href="#!">Здоровые,</a>
+                                    <a class="ms-1" href="#!">Фрукты</a>
+                                </div>
+                            </div>
+                            <div class="product_social_links d-flex align-items-center">
+                                <h6 class="product_social_title text-uppercase">поделиться:</h6>
+                                <ul class="list-unstyled d-flex mb-0">
+                                    <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#!"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#!"><i class="fab fa-pinterest-p"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- product-10 section end -->
+    </main>
+    <!-- main body end -->
+
+    <!-- footer section start -->
+    <footer class="footer_section position-relative">
+        <div class="footer_section_wrap sec_top_space_50"
+            style="background-image: url({{ asset('assets/images/footer/footer.png') }})">
+            <div class="container">
+                <div class="footer_top_content d-flex flex-column flex-lg-row justify-content-between align-items-center">
+                    <div class="footer_top_logo">
+                        <a href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo2.png') }}" alt="Organic Fruits">
+                        </a>
+                    </div>
+                    <div class="footer_top_subs position-relative">
+                        <input class="rounded-pill" type="search" name="search" placeholder="Ваш номер телефона">
+                        <a href="#!">
+                            <button type="button" class="btn custom_btn rounded-pill text-white position-absolute">
+                                Подписаться <i class="fas fa-long-arrow-alt-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="footer_top_social">
+                        <ul class="list-unstyled d-flex justify-content-end">
+                            <li class="me-3"><a href="#!"><i class="fab fa-twitter"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-instagram"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer_inner_content sec_space_xs_70">
+                    <div class="footer_inner_content_wrap">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_choose_content">
+                                    <div class="footer_inner_choose_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Почему выбирают нас</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_choose_desc pt-2">
+                                        <p>Мы предлагаем только свежие органические фрукты высшего качества, 
+                                        выращенные с заботой о природе и вашем здоровье.</p>
+                                    </div>
+                                    <div class="footer_inner_choose">
+                                        <a href="#!">
+                                            <button type="button" class="btn custom_btn rounded-pill px-4 text-white">
+                                                Подробнее <i class="fas fa-long-arrow-alt-right"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_info_content">
+                                    <div class="footer_inner_info_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Информация</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_info_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">О нас</a></li>
+                                            <li><a href="#!">Информация о доставке</a></li>
+                                            <li><a href="#!">Политика конфиденциальности</a></li>
+                                            <li><a href="#!">Условия использования</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_acct_content">
+                                    <div class="footer_inner_acct_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Мой аккаунт</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_acct_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">Мой аккаунт</a></li>
+                                            <li><a href="#!">Корзина покупок</a></li>
+                                            <li><a href="#!">Список желаний</a></li>
+                                            <li><a href="#!">Отслеживание заказа</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_cotc_content">
+                                    <div class="footer_inner_ctc_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Контакты</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_ctc_info pt-2 text-white">
+                                        <p>Адрес: <font>Краснодар, ул. Красная, 2</font></p>
+                                        <p>Email: <font>info@organicfruits.ru</font></p>
+                                        <p>Телефон: <font>+7 (999) 123-45-67</font></p>
+                                        <div class="footer_inner_payment_ctc">
+                                            <div class="footer_inner_payment_title">
+                                                <h5 class="text-white">Принимаем к оплате</h5>
+                                            </div>
+                                            <div class="footer_inner_payment_thumb pt-3">
+                                                <a href="#!">
+                                                    <img src="{{ asset('assets/images/payment/payment.png') }}" alt="Способы оплаты">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bootom_content">
+                    <div class="footer_bootom_wrap">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_copyright">
+                                        <p>Copyright © 2024 <font>ORGANIC FRUITS</font> Inc. Все права защищены.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_privicy_cont d-flex justify-content-center align-items-center">
+                                        <div class="footer_bootom_privicy pe-5">
+                                            <a href="#!">
+                                                <p class="priv position-relative">Политика конфиденциальности</p>
+                                            </a>
+                                        </div>
+                                        <div class="footer_bootom_terms pe-5">
+                                            <p class="position-relative">Условия использования</p>
+                                        </div>
+                                        <div class="footer_bootom_refunds">
+                                            <p>Продажи и возвраты</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+</div>
+<!-- body wrap end -->
+
+<script>
+// Quantity controls
+document.addEventListener('DOMContentLoaded', function() {
+    const decrementBtn = document.querySelector('.input_number_decrement');
+    const incrementBtn = document.querySelector('.input_number_increment');
+    const quantityField = document.querySelector('.input_number');
+    
+    if (decrementBtn && incrementBtn && quantityField) {
+        decrementBtn.addEventListener('click', function() {
+            let value = parseInt(quantityField.value);
+            if (value > 1) {
+                quantityField.value = value - 1 + 'КГ';
+            }
+        });
+        
+        incrementBtn.addEventListener('click', function() {
+            let value = parseInt(quantityField.value);
+            quantityField.value = value + 1 + 'КГ';
+        });
+    }
+
+    // Add to cart functionality
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function() {
+            const productId = this.dataset.productId;
+            const quantity = parseInt(document.querySelector('.input_number').value) || 1;
+            
+            addToCart(productId, quantity);
+        });
+    }
+
+    function addToCart(productId, quantity) {
+        fetch(`/cart/add/${productId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `quantity=${quantity}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success message
+                showNotification('Товар добавлен в корзину!', 'success');
+                
+                // Update cart count in header
+                updateCartCount(data.cartItemsCount);
+            } else {
+                showNotification(data.error || 'Ошибка при добавлении товара', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Произошла ошибка при добавлении товара', 'error');
+        });
+    }
+
+    function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+        notification.innerHTML = `
+            <div class="d-flex align-items-center">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                ${message}
+                <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.remove();
+            }
+        }, 3000);
+    }
+
+    function updateCartCount(count) {
+        const cartCountElements = document.querySelectorAll('#cart-count, #cart-count-mobile');
+        cartCountElements.forEach(element => {
+            element.textContent = count;
+        });
+    }
+
+    // Load current cart count on page load
+    function loadCartCount() {
+        fetch('/cart/count')
+            .then(response => response.json())
+            .then(data => {
+                updateCartCount(data.count);
+            })
+            .catch(error => {
+                console.error('Error loading cart count:', error);
+            });
+    }
+
+    // Load cart count when page loads
+    loadCartCount();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ product.name }} - Админ панель{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ product.name }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{{ path('admin_product_index') }}" class="btn btn-outline-secondary me-2">
+            <i class="fas fa-arrow-left"></i> Назад к списку
+        </a>
+        <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-primary">
+            <i class="fas fa-edit"></i> Редактировать
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Информация о товаре</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <tr>
+                        <th width="200">ID:</th>
+                        <td>{{ product.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Название:</th>
+                        <td>{{ product.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Цена:</th>
+                        <td>{{ product.price ? product.price ~ '₽' : 'Не указана' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Категория:</th>
+                        <td>{{ product.category ? product.category.name : 'Без категории' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Описание:</th>
+                        <td>{{ product.description ?: 'Описание не указано' }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Изображения товара</h5>
+            </div>
+            <div class="card-body">
+                {% if product.images|length > 0 %}
+                    <div class="row">
+                        {% for image in product.images %}
+                            <div class="col-md-6 mb-3">
+                                <div class="position-relative">
+                                    <img src="{{ asset('uploads/products/' ~ image.filename) }}" 
+                                         alt="{{ product.name }}" class="img-fluid rounded">
+                                    {% if image.isMain %}
+                                        <span class="badge bg-primary position-absolute top-0 start-0 m-2">Главное</span>
+                                    {% endif %}
+                                    <small class="text-muted d-block mt-1">Порядок: {{ image.sortOrder }}</small>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">Изображения не загружены</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,698 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Результаты поиска - Organic Fruits{% endblock %}
+
+{% block body %}
+<!-- body wrap start -->
+<div class="body-wrap overflow-hidden">
+    <!-- back-to-top start -->
+    <div class="back-to-top">
+        <a href="#!"><i class="fas fa-arrow-up"></i></a>
+    </div>
+    <!-- back-to-top end -->
+
+    <!-- header section start -->
+    <header class="header_section header_1">
+        <!-- top header start -->
+        <div class="top_header_main d-none d-sm-block">
+            <div class="container">
+                <div class="header_top d-flex align-items-center justify-content-between">
+                    <div class="header_top_content d-flex pt-2">
+                        <div class="mail_text_content d-flex">
+                            <p class="mail_icon"><span><i class="far fa-envelope text-white pe-2"></i></span></p>
+                            <p class="mail_text">info@organicfruits.ru</p>
+                        </div>
+                        <div class="address_text_content d-flex">
+                            <p class="mail_icon"><span><i class="fas fa-map-marker-alt text-white pe-2"></i></span></p>
+                            <p class="address_text">Краснодар, ул. Красная, 2</p>
+                        </div>
+                    </div>
+                    <div class="header_top_socials pt-2">
+                        <ul class="list-unstyled d-flex">
+                            <li><a href="#!"><i class="fab fa-facebook-f text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-twitter text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-instagram text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-linkedin-in text-white"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top header end -->
+
+        <!-- bottom header start -->
+        <div class="header_bottom_main">
+            <div class="container">
+                <!-- web menubar start-->
+                <div class="webMenu d-none d-lg-block position-relative">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand position-relative" href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav main_menu_list m-auto after_navbar">
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="#!">О нас</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="#!">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar_user me-2">
+                            <div class="navbar_user_icon">
+                                <ul class="list-unstyled d-flex mb-0">
+                                    <li class="pe-3">
+                                        <button class="main_search_btn" data-bs-toggle="collapse"
+                                            data-bs-target="#main_search_collapse" aria-expanded="false"
+                                            aria-controls="main_search_collapse">
+                                            <i class="search_icon fas fa-search"></i>
+                                            <i class="search_close fas fa-times"></i>
+                                        </button>
+                                    </li>
+                                    <li class="pe-2 position-relative">
+                                        <a href="#collapseExample" data-bs-toggle="collapse" href="#collapseExample"
+                                            role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="far fa-user" data-toggle="collapse" role="button"
+                                                data-target="#use_deropdown" aria-expanded="false"
+                                                aria-controls="use_deropdown"></i>
+                                        </a>
+                                    </li>
+                                    <li class="pe-2"><a href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li>
+                                        <a href="{{ path('cart_show') }}">
+                                            <i class="fas fa-shopping-bag position-relative"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                                                0
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- web menubar end-->
+                
+                <!-- mobile menubar start -->
+                <div class="mobileMenu d-block d-lg-none">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                            <div class="offcanvas-header">
+                                <button type="button" class="btn-close mobile_menu_close text-reset"
+                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav main_menu_list m-auto">
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="#!">О нас</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="#!">Контакты</a>
+                                    </li>
+                                </ul>
+                                <div class="mobile_menu_icons mt-4">
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                        <li class="pe-3">
+                                            <button class="main_search_btn" data-bs-toggle="collapse"
+                                                data-bs-target="#main_search_collapse" aria-expanded="false"
+                                                aria-controls="main_search_collapse">
+                                                <i class="search_icon fas fa-search"></i>
+                                            </button>
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="#!">
+                                                <i class="far fa-user"></i>
+                                            </a>
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="#!">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('cart_show') }}">
+                                                <i class="fas fa-shopping-bag position-relative">
+                                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count-mobile">
+                                                        0
+                                                    </span>
+                                                </i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- mobile menubar end -->
+            </div>
+        </div>
+        <!-- bottom header end -->
+    </header>
+    <!-- header section end -->
+
+    <!-- main body start -->
+    <main class="main_body">
+        <!-- breadcrumb section start -->
+        <section class="breadcrumb_sec_1 position-relative">
+            <div class="breadcrumb_wrap sec_space_mid_small"
+                style="background-image: url({{ asset('assets/images/breadcrumb/breadcrumb1.png') }});">
+                <div class="breadcrumb_cont text-center">
+                    <div class="breadcrumb_title">
+                        <h2 class="text-white">Результаты поиска</h2>
+                    </div>
+                    <ul class="list-unstyled breadcrumb_item d-flex justify-content-center align-items-center text-white">
+                        <li><a href="{{ path('home') }}"><i class="fas fa-home active"></i>Главная</a></li>
+                        <li><i class="fas fa-chevron-right"></i></li>
+                        <li>Поиск</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb section end -->
+
+        <!-- search results section start -->
+        <section class="search_results_section sec_ptb_100">
+            <div class="container">
+                <!-- search form -->
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="search_form_wrapper">
+                            <form action="{{ path('search') }}" method="GET" class="search_form">
+                                <div class="input-group">
+                                    <input type="text" 
+                                           name="q" 
+                                           class="form-control form-control-lg" 
+                                           placeholder="Поиск продуктов..." 
+                                           value="{{ query }}"
+                                           id="search-input">
+                                    <select name="category" class="form-select form-select-lg" style="max-width: 200px;">
+                                        <option value="">Все категории</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}" 
+                                                    {% if categoryId == category.id %}selected{% endif %}>
+                                                {{ category.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <i class="fas fa-search"></i> Поиск
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- search results -->
+                <div class="row">
+                    <div class="col-12">
+                        {% if query %}
+                            <div class="search_info mb-4">
+                                <h4>
+                                    {% if products|length > 0 %}
+                                        Найдено {{ products|length }} {{ products|length == 1 ? 'товар' : (products|length < 5 ? 'товара' : 'товаров') }} по запросу "{{ query }}"
+                                    {% else %}
+                                        По запросу "{{ query }}" ничего не найдено
+                                    {% endif %}
+                                </h4>
+                            </div>
+                        {% endif %}
+
+                        {% if products|length > 0 %}
+                            <div class="row">
+                                {% for product in products %}
+                                    <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                                        <div class="product_item text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="{{ loop.index * 100 }}">
+                                            <div class="product_item_thumb">
+                                                <a href="{{ path('product_show', {'id': product.id}) }}">
+                                                    {% if product.mainImage %}
+                                                        <img src="{{ asset('uploads/products/' ~ product.mainImage.filename) }}" 
+                                                             alt="{{ product.name }}" 
+                                                             class="img-fluid">
+                                                    {% else %}
+                                                        <img src="{{ asset('assets/images/product/product' ~ (loop.index % 4 + 1) ~ '.png') }}" 
+                                                             alt="{{ product.name }}" 
+                                                             class="img-fluid">
+                                                    {% endif %}
+                                                </a>
+                                                <div class="product_item_action">
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <button class="add-to-cart-btn" data-product-id="{{ product.id }}">
+                                                                <i class="fas fa-shopping-cart"></i>
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ path('product_show', {'id': product.id}) }}">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#!">
+                                                                <i class="far fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product_item_content">
+                                                <h4 class="product_item_title">
+                                                    <a href="{{ path('product_show', {'id': product.id}) }}">{{ product.name }}</a>
+                                                </h4>
+                                                <div class="product_item_price">
+                                                    <span class="price">{{ product.price }}₽</span>
+                                                </div>
+                                                <div class="product_item_rating">
+                                                    <ul class="list-unstyled d-flex justify-content-center">
+                                                        <li><i class="fas fa-star"></i></li>
+                                                        <li><i class="fas fa-star"></i></li>
+                                                        <li><i class="fas fa-star"></i></li>
+                                                        <li><i class="fas fa-star"></i></li>
+                                                        <li><i class="fas fa-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% elseif query %}
+                            <div class="text-center py-5">
+                                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                                <h3>Ничего не найдено</h3>
+                                <p class="text-muted">Попробуйте изменить поисковый запрос или выбрать другую категорию.</p>
+                                <a href="{{ path('products_all') }}" class="btn btn-primary mt-3">
+                                    <i class="fas fa-shopping-bag"></i> Посмотреть все продукты
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="text-center py-5">
+                                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                                <h3>Введите поисковый запрос</h3>
+                                <p class="text-muted">Используйте форму поиска выше для поиска продуктов.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- search results section end -->
+    </main>
+    <!-- main body end -->
+
+    <!-- footer section start -->
+    <footer class="footer_section position-relative">
+        <div class="footer_section_wrap sec_top_space_50"
+            style="background-image: url({{ asset('assets/images/footer/footer.png') }})">
+            <div class="container">
+                <div class="footer_top_content d-flex flex-column flex-lg-row justify-content-between align-items-center">
+                    <div class="footer_top_logo">
+                        <a href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo2.png') }}" alt="Organic Fruits">
+                        </a>
+                    </div>
+                    <div class="footer_top_subs position-relative">
+                        <input class="rounded-pill" type="search" name="search" placeholder="Ваш номер телефона">
+                        <a href="#!">
+                            <button type="button" class="btn custom_btn rounded-pill text-white position-absolute">
+                                Подписаться <i class="fas fa-long-arrow-alt-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="footer_top_social">
+                        <ul class="list-unstyled d-flex justify-content-end">
+                            <li class="me-3"><a href="#!"><i class="fab fa-twitter"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-instagram"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer_inner_content sec_space_xs_70">
+                    <div class="footer_inner_content_wrap">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_choose_content">
+                                    <div class="footer_inner_choose_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Почему выбирают нас</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_choose_desc pt-2">
+                                        <p>Мы предлагаем только свежие органические фрукты высшего качества, 
+                                        выращенные с заботой о природе и вашем здоровье.</p>
+                                    </div>
+                                    <div class="footer_inner_choose">
+                                        <a href="#!">
+                                            <button type="button" class="btn custom_btn rounded-pill px-4 text-white">
+                                                Подробнее <i class="fas fa-long-arrow-alt-right"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_info_content">
+                                    <div class="footer_inner_info_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Информация</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_info_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">О нас</a></li>
+                                            <li><a href="#!">Информация о доставке</a></li>
+                                            <li><a href="#!">Политика конфиденциальности</a></li>
+                                            <li><a href="#!">Условия использования</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_acct_content">
+                                    <div class="footer_inner_acct_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Мой аккаунт</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_acct_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">Мой аккаунт</a></li>
+                                            <li><a href="{{ path('cart_show') }}">Корзина покупок</a></li>
+                                            <li><a href="#!">Список желаний</a></li>
+                                            <li><a href="#!">Отслеживание заказа</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_cotc_content">
+                                    <div class="footer_inner_ctc_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Контакты</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_ctc_info pt-2 text-white">
+                                        <p>Адрес: <font>Краснодар, ул. Красная, 2</font></p>
+                                        <p>Email: <font>info@organicfruits.ru</font></p>
+                                        <p>Телефон: <font>+7 (999) 123-45-67</font></p>
+                                        <div class="footer_inner_payment_ctc">
+                                            <div class="footer_inner_payment_title">
+                                                <h5 class="text-white">Принимаем к оплате</h5>
+                                            </div>
+                                            <div class="footer_inner_payment_thumb pt-3">
+                                                <a href="#!">
+                                                    <img src="{{ asset('assets/images/payment/payment.png') }}" alt="Способы оплаты">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bootom_content">
+                    <div class="footer_bootom_wrap">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_copyright">
+                                        <p>Copyright © 2024 <font>ORGANIC FRUITS</font> Inc. Все права защищены.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_privicy_cont d-flex justify-content-center align-items-center">
+                                        <div class="footer_bootom_privicy pe-5">
+                                            <a href="#!">
+                                                <p class="priv position-relative">Политика конфиденциальности</p>
+                                            </a>
+                                        </div>
+                                        <div class="footer_bootom_terms pe-5">
+                                            <p class="position-relative">Условия использования</p>
+                                        </div>
+                                        <div class="footer_bootom_refunds">
+                                            <p>Продажи и возвраты</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+</div>
+<!-- body wrap end -->
+
+<script>
+    // Load cart count on page load
+    function loadCartCount() {
+        fetch('/cart/count')
+            .then(response => response.json())
+            .then(data => {
+                const cartCountElements = document.querySelectorAll('#cart-count, #cart-count-mobile');
+                cartCountElements.forEach(element => {
+                    element.textContent = data.count;
+                });
+            })
+            .catch(error => {
+                console.error('Error loading cart count:', error);
+            });
+    }
+
+    // Load cart count when page loads
+    document.addEventListener('DOMContentLoaded', loadCartCount);
+
+    // Add to cart functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+        
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                
+                fetch(`/cart/add/${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'quantity=1'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message
+                        const toast = document.createElement('div');
+                        toast.className = 'toast-notification';
+                        toast.innerHTML = `
+                            <div class="toast-body">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                ${data.message}
+                            </div>
+                        `;
+                        document.body.appendChild(toast);
+                        
+                        // Remove toast after 3 seconds
+                        setTimeout(() => {
+                            toast.remove();
+                        }, 3000);
+                        
+                        // Update cart count
+                        const cartCountElements = document.querySelectorAll('#cart-count, #cart-count-mobile');
+                        cartCountElements.forEach(element => {
+                            element.textContent = data.cartItemsCount;
+                        });
+                    } else {
+                        alert('Ошибка: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Произошла ошибка при добавлении товара в корзину');
+                });
+            });
+        });
+    });
+</script>
+
+<style>
+    .toast-notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 9999;
+        animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .search_form_wrapper {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .search_form .input-group {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .search_form .form-control,
+    .search_form .form-select {
+        border: none;
+        border-radius: 0;
+    }
+    
+    .search_form .form-control:focus,
+    .search_form .form-select:focus {
+        box-shadow: none;
+        border-color: #28a745;
+    }
+    
+    .search_info h4 {
+        color: #333;
+        font-weight: 600;
+    }
+    
+    .product_item {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .product_item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    
+    .product_item_thumb {
+        position: relative;
+        margin-bottom: 15px;
+    }
+    
+    .product_item_thumb img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .product_item_action {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .product_item:hover .product_item_action {
+        opacity: 1;
+    }
+    
+    .product_item_action ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .product_item_action li a,
+    .product_item_action li button {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .product_item_action li a:hover,
+    .product_item_action li button:hover {
+        background: #28a745;
+        color: #fff;
+        transform: scale(1.1);
+    }
+    
+    .product_item_title a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    
+    .product_item_title a:hover {
+        color: #28a745;
+    }
+    
+    .product_item_price .price {
+        font-size: 18px;
+        font-weight: 700;
+        color: #28a745;
+    }
+    
+    .product_item_rating ul {
+        margin: 10px 0 0 0;
+    }
+    
+    .product_item_rating li {
+        color: #ffc107;
+        margin: 0 2px;
+    }
+</style>
+{% endblock %}

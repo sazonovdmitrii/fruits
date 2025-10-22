@@ -40,4 +40,40 @@ class ProductRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * Поиск продуктов по названию
+     */
+    public function findBySearch(string $query, int $limit = null): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.name LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->orderBy('p.name', 'ASC');
+
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Поиск продуктов по названию и категории
+     */
+    public function findBySearchAndCategory(string $query, int $categoryId, int $limit = null): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.name LIKE :query')
+            ->andWhere('p.category = :categoryId')
+            ->setParameter('query', '%' . $query . '%')
+            ->setParameter('categoryId', $categoryId)
+            ->orderBy('p.name', 'ASC');
+
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

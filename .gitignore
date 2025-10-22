@@ -18,3 +18,30 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+# IDE files
+/.idea/
+/.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,101 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Новый товар - Админ панель{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Новый товар</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{{ path('admin_product_index') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Назад к списку
+        </a>
+    </div>
+</div>
+
+{{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Основная информация</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.name) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.price) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form_row(form.category) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form_row(form.description) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Изображения товара</h5>
+                </div>
+                <div class="card-body">
+                    <div id="images-container">
+                        {% for imageForm in form.images %}
+                            <div class="image-item" data-index="{{ loop.index0 }}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Файл изображения</label>
+                                            {{ form_widget(imageForm.file, {'attr': {'onchange': 'previewImage(this, "preview-' ~ loop.index0 ~ '")'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img id="preview-{{ loop.index0 }}" class="image-preview" style="display: none;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                {{ form_widget(imageForm.isMain) }}
+                                                {{ form_label(imageForm.isMain) }}
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            {{ form_label(imageForm.sortOrder) }}
+                                            {{ form_widget(imageForm.sortOrder) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="addImageForm()">
+                        <i class="fas fa-plus"></i> Добавить изображение
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-end">
+                <a href="{{ path('admin_product_index') }}" class="btn btn-secondary me-2">Отмена</a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Сохранить товар
+                </button>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}
+{% endblock %}
+

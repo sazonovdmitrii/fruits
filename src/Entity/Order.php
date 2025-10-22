@@ -32,7 +32,7 @@ class Order
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $middleName = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $lastName = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -43,6 +43,15 @@ class Order
 
     #[ORM\Column(type: 'string', enumType: OrderStatus::class)]
     private OrderStatus $status = OrderStatus::NEW;
+
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
+    private ?string $total = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $shippingAddress = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $notes = null;
 
     #[ORM\OneToMany(mappedBy: 'order', targetEntity: OrderItem::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $orderItems;
@@ -177,13 +186,87 @@ class Order
         return $this;
     }
 
+    public function getTotal(): ?string
+    {
+        return $this->total;
+    }
+
+    public function setTotal(string $total): static
+    {
+        $this->total = $total;
+        return $this;
+    }
+
+    public function getShippingAddress(): ?string
+    {
+        return $this->shippingAddress;
+    }
+
+    public function setShippingAddress(?string $shippingAddress): static
+    {
+        $this->shippingAddress = $shippingAddress;
+        return $this;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(?string $notes): static
+    {
+        $this->notes = $notes;
+        return $this;
+    }
+
+    public function getCustomerName(): string
+    {
+        return $this->getFullName();
+    }
+
+    public function setCustomerName(string $customerName): static
+    {
+        $nameParts = explode(' ', trim($customerName), 2);
+        $this->firstName = $nameParts[0];
+        if (isset($nameParts[1]) && !empty($nameParts[1])) {
+            $this->lastName = $nameParts[1];
+        } else {
+            $this->lastName = null;
+        }
+        return $this;
+    }
+
+    public function getCustomerEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setCustomerEmail(?string $customerEmail): static
+    {
+        $this->email = $customerEmail;
+        return $this;
+    }
+
+    public function getCustomerPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setCustomerPhone(?string $customerPhone): static
+    {
+        $this->phone = $customerPhone;
+        return $this;
+    }
+
     public function getFullName(): string
     {
-        $name = $this->firstName;
+        $name = $this->firstName ?? '';
         if ($this->middleName) {
             $name .= ' ' . $this->middleName;
         }
-        $name .= ' ' . $this->lastName;
+        if ($this->lastName) {
+            $name .= ' ' . $this->lastName;
+        }
         return $name;
     }
 

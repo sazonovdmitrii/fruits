@@ -33,8 +33,7 @@ class DashboardController extends AbstractDashboardController
 
     public function index(): Response
     {
-        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        return $this->redirect($adminUrlGenerator->setController(ProductCrudController::class)->generateUrl());
+        return $this->render('admin/dashboard.html.twig');
     }
 
     public function configureMenuItems(): iterable
