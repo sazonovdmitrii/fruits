@@ -1,10 +1,14 @@
+{% set title = title|default('Наши продукты') %}
+{% set category = category|default(null) %}
+{% set product = product|default(null) %}
+
 <!-- breadcrumb section start -->
 <section class="breadcrumb_sec_1 position-relative">
     <div class="breadcrumb_wrap sec_space_mid_small"
         style="background-image: url({{ asset('assets/images/breadcrumb/breadcrumb1.png') }});">
         <div class="breadcrumb_cont text-center">
             <div class="breadcrumb_title">
-                <h2 class="text-white">{{ title|default('Наши продукты') }}</h2>
+                <h2 class="text-white">{{ title }}</h2>
             </div>
             
             <!-- Desktop breadcrumbs -->
