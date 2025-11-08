@@ -44,16 +44,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav main_menu_list m-auto after_navbar">
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                <a class="nav-link {{ (active_menu ?? '') == 'home' ? 'active' : '' }}" href="{{ path('home') }}">Главная</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                <a class="nav-link {{ (active_menu ?? '') == 'categories' ? 'active' : '' }}" href="{{ path('categories') }}">Каталог</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="#!">О нас</a>
+                                <a class="nav-link {{ (active_menu ?? '') == 'about' ? 'active' : '' }}" href="#!">О нас</a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="#!">Контакты</a>
+                                <a class="nav-link {{ (active_menu ?? '') == 'contacts' ? 'active' : '' }}" href="#!">Контакты</a>
                             </li>
                         </ul>
                     </div>
@@ -136,16 +136,16 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav main_menu_list m-auto">
                                 <li class="nav-item pe-4">
-                                    <a class="nav-link" href="{{ path('home') }}">Главная</a>
+                                    <a class="nav-link {{ (active_menu ?? '') == 'home' ? 'active' : '' }}" href="{{ path('home') }}">Главная</a>
                                 </li>
                                 <li class="nav-item pe-4">
-                                    <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                    <a class="nav-link {{ (active_menu ?? '') == 'categories' ? 'active' : '' }}" href="{{ path('categories') }}">Каталог</a>
                                 </li>
                                 <li class="nav-item pe-4">
-                                    <a class="nav-link" href="#!">О нас</a>
+                                    <a class="nav-link {{ (active_menu ?? '') == 'about' ? 'active' : '' }}" href="#!">О нас</a>
                                 </li>
                                 <li class="nav-item pe-4">
-                                    <a class="nav-link" href="#!">Контакты</a>
+                                    <a class="nav-link {{ (active_menu ?? '') == 'contacts' ? 'active' : '' }}" href="#!">Контакты</a>
                                 </li>
                             </ul>
                             <div class="mobile_menu_icons mt-4">
