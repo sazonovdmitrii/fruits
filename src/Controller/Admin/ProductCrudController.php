@@ -42,7 +42,10 @@ class ProductCrudController extends AbstractCrudController
             IdField::new('id', 'ID')->hideOnForm(),
             $mainImageField,
             TextField::new('name', 'Название'),
-            MoneyField::new('price', 'Цена')->setCurrency('RUB'),
+            MoneyField::new('price', 'Цена')
+                ->setCurrency('RUB')
+                ->setStoredAsCents(false)
+                ->setNumDecimals(2),
             TextareaField::new('description', 'Описание')->hideOnIndex(),
             AssociationField::new('category', 'Категория'),
             AssociationField::new('units', 'Единицы измерения')
