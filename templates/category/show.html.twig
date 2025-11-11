@@ -41,27 +41,27 @@
                                 <div class="product_item" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="{{ loop.index * 100 }}">
                                     <div class="product_thumb">
                                         <a href="{{ path('product_show', {'id': product.id}) }}">
-                                            {% if product.mainImage %}
-                                                <img src="{{ asset('uploads/products/' ~ product.mainImage.filename) }}" alt="{{ product.name }}" class="img-fluid">
+                                        {% if product.mainImage %}
+                                            <img src="{{ asset('uploads/products/' ~ product.mainImage.filename) }}" alt="{{ product.name }}" class="img-fluid product-card__image">
+                                        {% else %}
+                                            {% if product.category.name == 'Апельсины' %}
+                                                <img src="{{ asset('assets/images/product/product2.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
+                                            {% elseif product.category.name == 'Яблоки' %}
+                                                <img src="{{ asset('assets/images/product/product1.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
+                                            {% elseif product.category.name == 'Бананы' %}
+                                                <img src="{{ asset('assets/images/product/product3.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
+                                            {% elseif product.category.name == 'Виноград' %}
+                                                <img src="{{ asset('assets/images/product/product4.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
+                                            {% elseif product.category.name == 'Груши' %}
+                                                <img src="{{ asset('assets/images/product/product5.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
+                                            {% elseif product.category.name == 'Клубника' %}
+                                                <img src="{{ asset('assets/images/product/product6.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
                                             {% else %}
-                                                {% if product.category.name == 'Апельсины' %}
-                                                    <img src="{{ asset('assets/images/product/product2.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% elseif product.category.name == 'Яблоки' %}
-                                                    <img src="{{ asset('assets/images/product/product1.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% elseif product.category.name == 'Бананы' %}
-                                                    <img src="{{ asset('assets/images/product/product3.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% elseif product.category.name == 'Виноград' %}
-                                                    <img src="{{ asset('assets/images/product/product4.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% elseif product.category.name == 'Груши' %}
-                                                    <img src="{{ asset('assets/images/product/product5.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% elseif product.category.name == 'Клубника' %}
-                                                    <img src="{{ asset('assets/images/product/product6.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% else %}
-                                                    <img src="{{ asset('assets/images/product/product1.png') }}" alt="{{ product.name }}" class="img-fluid">
-                                                {% endif %}
+                                                <img src="{{ asset('assets/images/product/product1.png') }}" alt="{{ product.name }}" class="img-fluid product-card__image">
                                             {% endif %}
+                                        {% endif %}
                                         </a>
-                                        <div class="product_action d-flex gap-2">
+                                    <div class="product_action d-flex gap-2 mt-3">
                                             <a href="#!" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip" title="В избранное">
                                                 <i class="fas fa-heart"></i>
                                             </a>

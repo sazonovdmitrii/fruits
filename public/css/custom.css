@@ -206,3 +206,13 @@
         font-size: 2rem;
     }
 }
+
+.product-card__image {
+    max-width: 202px;
+    max-height: 242px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
