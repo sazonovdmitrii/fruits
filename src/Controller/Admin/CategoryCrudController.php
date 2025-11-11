@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class CategoryCrudController extends AbstractCrudController
 {
@@ -18,14 +19,23 @@ class CategoryCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('name', 'Название'),
-            TextareaField::new('description', 'Описание')->hideOnIndex(),
-            AssociationField::new('products', 'Товары')
-                ->onlyOnDetail()
-                ->setTemplatePath('admin/category_products.html.twig')
-        ];
+        yield IdField::new('id')->hideOnForm();
+
+        yield ImageField::new('image', 'Изображение')
+            ->setBasePath('uploads/categories')
+            ->setUploadDir('public/uploads/categories')
+            ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+            ->setRequired(false)
+            ->setSortable(false);
+
+        yield TextField::new('name', 'Название');
+
+        yield TextareaField::new('description', 'Описание')
+            ->hideOnIndex();
+
+        yield AssociationField::new('products', 'Товары')
+            ->onlyOnDetail()
+            ->setTemplatePath('admin/category_products.html.twig');
     }
 }
 

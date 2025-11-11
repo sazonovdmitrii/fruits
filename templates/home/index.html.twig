@@ -1,0 +1,648 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- body wrap start -->
+<div class="body-wrap overflow-hidden">
+    <!-- back-to-top start -->
+    <div class="back-to-top">
+        <a href="#!"><i class="fas fa-arrow-up"></i></a>
+    </div>
+    <!-- back-to-top end -->
+
+    <!-- header section start -->
+    <header class="header_section header_1">
+        <!-- top header start -->
+        <div class="top_header_main d-none d-sm-block">
+            <div class="container">
+                <div class="header_top d-flex align-items-center justify-content-between">
+                    <div class="header_top_content d-flex pt-2">
+                        <div class="mail_text_content d-flex">
+                            <p class="mail_icon"><span><i class="far fa-envelope text-white pe-2"></i></span></p>
+                            <p class="mail_text">info@organicfruits.ru</p>
+                        </div>
+                        <div class="address_text_content d-flex">
+                            <p class="mail_icon"><span><i class="fas fa-map-marker-alt text-white pe-2"></i></span></p>
+                            <p class="address_text">Краснодар, ул. Красная, 2</p>
+                        </div>
+                    </div>
+                    <div class="header_top_socials pt-2">
+                        <ul class="list-unstyled d-flex">
+                            <li><a href="#!"><i class="fab fa-facebook-f text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-twitter text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-instagram text-white pe-3"></i></a></li>
+                            <li><a href="#!"><i class="fab fa-linkedin-in text-white"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top header end -->
+
+        <!-- bottom header start -->
+        <div class="header_bottom_main">
+            <div class="container">
+                <!-- web menubar start-->
+                <div class="webMenu d-none d-lg-block position-relative">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand position-relative" href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav main_menu_list m-auto after_navbar">
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" href="{{ path('home') }}">Главная</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="#!">О нас</a>
+                                </li>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="#!">Контакты</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar_user me-2">
+                            <div class="navbar_user_icon">
+                                <ul class="list-unstyled d-flex mb-0">
+                                    <li class="pe-3">
+                                        <button class="main_search_btn" data-bs-toggle="collapse"
+                                            data-bs-target="#main_search_collapse" aria-expanded="false"
+                                            aria-controls="main_search_collapse">
+                                            <i class="search_icon fas fa-search"></i>
+                                            <i class="search_close fas fa-times"></i>
+                                        </button>
+                                    </li>
+                                    <li class="pe-2 position-relative">
+                                        {% if app.user %}
+                                            <a href="{{ path('app_profile') }}">
+                                                <i class="fas fa-user-circle"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ path('app_login') }}">
+                                                <i class="far fa-user"></i>
+                                            </a>
+                                        {% endif %}
+                                    </li>
+                                    <li class="pe-2"><a href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li>
+                                        <a href="{{ path('cart_show') }}">
+                                            <i class="fas fa-shopping-bag position-relative"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                                                0
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- web menubar end-->
+                
+                <!-- mobile menubar start -->
+                <div class="mobileMenu d-block d-lg-none">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Organic Fruits">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                            <div class="offcanvas-header">
+                                <button type="button" class="btn-close mobile_menu_close text-reset"
+                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav main_menu_list m-auto">
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link active" href="{{ path('home') }}">Главная</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="{{ path('categories') }}">Каталог</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="#!">О нас</a>
+                                    </li>
+                                    <li class="nav-item pe-4">
+                                        <a class="nav-link" href="#!">Контакты</a>
+                                    </li>
+                                </ul>
+                                <div class="mobile_menu_icons mt-4">
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                        <li class="pe-3">
+                                            <button class="main_search_btn" data-bs-toggle="collapse"
+                                                data-bs-target="#main_search_collapse" aria-expanded="false"
+                                                aria-controls="main_search_collapse">
+                                                <i class="search_icon fas fa-search"></i>
+                                            </button>
+                                        </li>
+                                        <li class="pe-3">
+                                            {% if app.user %}
+                                                <a href="{{ path('app_profile') }}">
+                                                    <i class="fas fa-user-circle"></i>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ path('app_login') }}">
+                                                    <i class="far fa-user"></i>
+                                                </a>
+                                            {% endif %}
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="#!">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('cart_show') }}">
+                                                <i class="fas fa-shopping-bag position-relative">
+                                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count-mobile">
+                                                        0
+                                                    </span>
+                                                </i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- mobile menubar end -->
+            </div>
+        </div>
+        <!-- bottom header end -->
+    </header>
+    <!-- header section end -->
+
+    <!-- main body start -->
+    <main class="main_body">
+        <!-- banner section start -->
+        <section class="banner_section_main position-relative">
+            <div class="banner_section_item sec_space_xxxlarge d-flex justify-content-center align-items-center"
+                style="background-image: url({{ asset('assets/images/banner/banner1.png') }})">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col banner_content">
+                            <div class="banner_sub_title position-relative">
+                                <h6 class="position-absolute text-uppercase">100% Органические продукты</h6>
+                                <img class="sub_title_bg" src="{{ asset('assets/images/shapes/shape2.png') }}" alt="image_not_found">
+                            </div>
+                            <div class="banner_title m-auto">
+                                <h1>Свежие <font class="first">органические фрукты</font> для вашего <font class="text-effect">
+                                    <span>з</span><span>д</span><span>о</span><span>р</span><span>о</span><span>в</span><span>ь</span><span>я</span>
+                                </font>
+                                </h1>
+                            </div>
+                            <div class="banner_search_bar d-inline-block position-relative">
+                                <form action="{{ path('search') }}" method="GET" class="d-flex align-items-center">
+                                    <input class="d-inline-block rounded-pill border-0 shadow py-3 px-5" type="text"
+                                        name="q" placeholder="Поиск продуктов" id="search-input" autocomplete="off">
+                                    <select name="category" class="select_option position-absolute rounded-pill">
+                                        <option value="">Все категории</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-success rounded-pill px-4 py-3 ms-2">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- banner section end -->
+
+        <!-- category section start -->
+        <section class="category_section sec_ptb_100 position-relative overflow-hidden clearfix" data-aos="fade-up" data-aos-duration="2000">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="category_section_title text-center mb-5">
+                            <h2 class="category_section_heading">Наши категории</h2>
+                            <p class="category_section_desc">Выберите из широкого ассортимента органических фруктов</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for category in categories|slice(0, 4) %}
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="category_section_item text-center" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="{{ loop.index * 100 }}">
+                                <div class="category_section_thumb">
+                                    <a href="{{ path('category_show', {'id': category.id}) }}">
+                                        {% if category.image %}
+                                            <img src="{{ asset('uploads/categories/' ~ category.image) }}" alt="{{ category.name }}">
+                                        {% else %}
+                                            <div class="category-placeholder">
+                                                <span class="category-placeholder__icon">
+                                                    <i class="fas fa-apple-alt"></i>
+                                                </span>
+                                                <span class="category-placeholder__text">{{ category.name|first|upper }}</span>
+                                            </div>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="category_section_content">
+                                    <h4 class="category_section_title_item">
+                                        <a href="{{ path('category_show', {'id': category.id}) }}">{{ category.name }}</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center mt-4">
+                        <a href="{{ path('categories') }}" class="btn custom_btn rounded-pill text-white px-4 py-2">
+                            Посмотреть все категории <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- category section end -->
+
+        <!-- product section start -->
+        <section class="product_section sec_space_xxs_50" data-aos="fade-up" data-aos-duration="2000">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="product_section_content">
+                            <h2 class="product_section_heading mb-4">Популярные продукты</h2>
+                            <p class="product_section_desc mb-4">
+                                Наши самые популярные органические фрукты, которые выбирают наши клиенты
+                            </p>
+                            <div class="product_section_btn">
+                                <a href="{{ path('products_all') }}" class="btn custom_btn rounded-pill text-white px-4 py-2">
+                                    Посмотреть все <i class="fas fa-long-arrow-alt-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product_section_thumb">
+                            <img src="{{ asset('assets/images/product/product1.png') }}" alt="Органические фрукты" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- product section end -->
+
+        <!-- about section start -->
+        <section class="about_section sec_ptb_100 position-relative" data-aos="fade-up" data-aos-duration="2000">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about_section_thumb">
+                            <img src="{{ asset('assets/images/quality/qlty1.png') }}" alt="О нас" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about_section_content">
+                            <h2 class="about_section_heading mb-4">О нашей компании</h2>
+                            <p class="about_section_desc mb-4">
+                                Мы специализируемся на поставке свежих органических фруктов высшего качества. 
+                                Наша миссия - обеспечить вас натуральными, полезными и вкусными фруктами, 
+                                выращенными без использования химических удобрений и пестицидов.
+                            </p>
+                            <div class="about_section_features">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="about_section_feature_item mb-3">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>100% органические продукты</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="about_section_feature_item mb-3">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Быстрая доставка</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="about_section_feature_item mb-3">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Свежесть гарантирована</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="about_section_feature_item mb-3">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Конкурентные цены</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about section end -->
+    </main>
+    <!-- main body end -->
+
+    <!-- footer section start -->
+    <footer class="footer_section position-relative">
+        <div class="footer_section_wrap sec_top_space_50"
+            style="background-image: url({{ asset('assets/images/footer/footer.png') }})">
+            <div class="container">
+                <div class="footer_top_content d-flex flex-column flex-lg-row justify-content-between align-items-center">
+                    <div class="footer_top_logo">
+                        <a href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo2.png') }}" alt="Organic Fruits">
+                        </a>
+                    </div>
+                    <div class="footer_top_subs position-relative">
+                        <input class="rounded-pill" type="search" name="search" placeholder="Ваш номер телефона">
+                        <a href="#!">
+                            <button type="button" class="btn custom_btn rounded-pill text-white position-absolute">
+                                Подписаться <i class="fas fa-long-arrow-alt-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="footer_top_social">
+                        <ul class="list-unstyled d-flex justify-content-end">
+                            <li class="me-3"><a href="#!"><i class="fab fa-twitter"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-instagram"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer_inner_content sec_space_xs_70">
+                    <div class="footer_inner_content_wrap">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_choose_content">
+                                    <div class="footer_inner_choose_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Почему выбирают нас</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_choose_desc pt-2">
+                                        <p>Мы предлагаем только свежие органические фрукты высшего качества, 
+                                        выращенные с заботой о природе и вашем здоровье.</p>
+                                    </div>
+                                    <div class="footer_inner_choose">
+                                        <a href="#!">
+                                            <button type="button" class="btn custom_btn rounded-pill px-4 text-white">
+                                                Подробнее <i class="fas fa-long-arrow-alt-right"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_info_content">
+                                    <div class="footer_inner_info_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Информация</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_info_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">О нас</a></li>
+                                            <li><a href="#!">Информация о доставке</a></li>
+                                            <li><a href="#!">Политика конфиденциальности</a></li>
+                                            <li><a href="#!">Условия использования</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_acct_content">
+                                    <div class="footer_inner_acct_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Мой аккаунт</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_acct_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">Мой аккаунт</a></li>
+                                            <li><a href="#!">Корзина покупок</a></li>
+                                            <li><a href="#!">Список желаний</a></li>
+                                            <li><a href="#!">Отслеживание заказа</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_cotc_content">
+                                    <div class="footer_inner_ctc_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Контакты</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_ctc_info pt-2 text-white">
+                                        <p>Адрес: <font>Краснодар, ул. Красная, 2</font></p>
+                                        <p>Email: <font>info@organicfruits.ru</font></p>
+                                        <p>Телефон: <font>+7 (999) 123-45-67</font></p>
+                                        <div class="footer_inner_payment_ctc">
+                                            <div class="footer_inner_payment_title">
+                                                <h5 class="text-white">Принимаем к оплате</h5>
+                                            </div>
+                                            <div class="footer_inner_payment_thumb pt-3">
+                                                <a href="#!">
+                                                    <img src="{{ asset('assets/images/payment/payment.png') }}" alt="Способы оплаты">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bootom_content">
+                    <div class="footer_bootom_wrap">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_copyright">
+                                        <p>Copyright © 2024 <font>ORGANIC FRUITS</font> Inc. Все права защищены.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_privicy_cont d-flex justify-content-center align-items-center">
+                                        <div class="footer_bootom_privicy pe-5">
+                                            <a href="#!">
+                                                <p class="priv position-relative">Политика конфиденциальности</p>
+                                            </a>
+                                        </div>
+                                        <div class="footer_bootom_terms pe-5">
+                                            <p class="position-relative">Условия использования</p>
+                                        </div>
+                                        <div class="footer_bootom_refunds">
+                                            <p>Продажи и возвраты</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+</div>
+<!-- body wrap end -->
+
+<script>
+    // Load cart count on page load
+    function loadCartCount() {
+        fetch('/cart/count')
+            .then(response => response.json())
+            .then(data => {
+                const cartCountElements = document.querySelectorAll('#cart-count, #cart-count-mobile');
+                cartCountElements.forEach(element => {
+                    element.textContent = data.count;
+                });
+            })
+            .catch(error => {
+                console.error('Error loading cart count:', error);
+            });
+    }
+
+    // Load cart count when page loads
+    document.addEventListener('DOMContentLoaded', loadCartCount);
+
+    // Search autocomplete functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-input');
+        const searchForm = document.querySelector('.banner_search_bar form');
+        
+        if (searchInput) {
+            let searchTimeout;
+            let suggestionsContainer;
+            
+            // Create suggestions container
+            function createSuggestionsContainer() {
+                if (!suggestionsContainer) {
+                    suggestionsContainer = document.createElement('div');
+                    suggestionsContainer.className = 'search-suggestions';
+                    suggestionsContainer.style.cssText = `
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: white;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                        z-index: 1000;
+                        max-height: 300px;
+                        overflow-y: auto;
+                        display: none;
+                    `;
+                    searchForm.appendChild(suggestionsContainer);
+                }
+                return suggestionsContainer;
+            }
+            
+            // Show suggestions
+            function showSuggestions(suggestions) {
+                const container = createSuggestionsContainer();
+                container.innerHTML = '';
+                
+                if (suggestions.length === 0) {
+                    container.innerHTML = '<div class="p-3 text-muted">Ничего не найдено</div>';
+                } else {
+                    suggestions.forEach(suggestion => {
+                        const item = document.createElement('div');
+                        item.className = 'suggestion-item';
+                        item.style.cssText = `
+                            padding: 12px 15px;
+                            border-bottom: 1px solid #eee;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            transition: background-color 0.2s;
+                        `;
+                        item.innerHTML = `
+                            <img src="${suggestion.image}" alt="${suggestion.name}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px; margin-right: 12px;">
+                            <div>
+                                <div style="font-weight: 600; color: #333;">${suggestion.name}</div>
+                                <div style="color: #28a745; font-weight: 600;">${suggestion.price}₽</div>
+                            </div>
+                        `;
+                        
+                        item.addEventListener('mouseenter', function() {
+                            this.style.backgroundColor = '#f8f9fa';
+                        });
+                        
+                        item.addEventListener('mouseleave', function() {
+                            this.style.backgroundColor = 'white';
+                        });
+                        
+                        item.addEventListener('click', function() {
+                            window.location.href = suggestion.url;
+                        });
+                        
+                        container.appendChild(item);
+                    });
+                }
+                
+                container.style.display = 'block';
+            }
+            
+            // Hide suggestions
+            function hideSuggestions() {
+                if (suggestionsContainer) {
+                    suggestionsContainer.style.display = 'none';
+                }
+            }
+            
+            // Search input event
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim();
+                
+                clearTimeout(searchTimeout);
+                
+                if (query.length < 2) {
+                    hideSuggestions();
+                    return;
+                }
+                
+                searchTimeout = setTimeout(() => {
+                    fetch(`/search/suggestions?q=${encodeURIComponent(query)}`)
+                        .then(response => response.json())
+                        .then(suggestions => {
+                            showSuggestions(suggestions);
+                        })
+                        .catch(error => {
+                            console.error('Search error:', error);
+                        });
+                }, 300);
+            });
+            
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchForm.contains(e.target)) {
+                    hideSuggestions();
+                }
+            });
+            
+            // Hide suggestions on form submit
+            searchForm.addEventListener('submit', function() {
+                hideSuggestions();
+            });
+        }
+    });
+</script>
+{% endblock %}

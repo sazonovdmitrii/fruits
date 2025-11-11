@@ -1,0 +1,208 @@
+/* Custom UI enhancements */
+
+/* Mobile header icons styling */
+@media (max-width: 991.98px) {
+    .mobile-header-icons {
+        gap: 10px;
+    }
+
+    .mobile_icons ul li {
+        margin: 0 5px;
+    }
+
+    .mobile_icons .fas {
+        font-size: 18px;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+
+    .mobile_icons .fas:hover {
+        color: #28a745;
+    }
+
+    /* Mobile navbar improvements */
+    .mobileMenu .navbar {
+        padding: 10px 0;
+    }
+
+    .mobileMenu .navbar-brand img {
+        max-height: 35px;
+    }
+
+    /* Compact breadcrumbs for mobile */
+    .breadcrumb_item.d-flex.d-md-none li {
+        font-size: 12px;
+        margin: 0 2px;
+    }
+
+    .breadcrumb_item.d-flex.d-md-none .fas {
+        font-size: 10px;
+    }
+
+    .breadcrumb_item.d-flex.d-md-none a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+    }
+
+    .breadcrumb_item.d-flex.d-md-none a:hover {
+        color: white;
+    }
+
+    /* Reduce breadcrumb section height on mobile */
+    .breadcrumb_wrap.sec_space_mid_small {
+        padding: 30px 0;
+    }
+
+    .breadcrumb_title h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    /* Mobile search collapse improvements */
+    #main_search_collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+}
+
+/* Very small screens */
+@media (max-width: 575.98px) {
+    .breadcrumb_item.d-flex.d-md-none li {
+        font-size: 11px;
+    }
+
+    .breadcrumb_title h2 {
+        font-size: 1.3rem;
+    }
+
+    .mobile-header-icons {
+        gap: 5px;
+    }
+
+    .mobile_icons ul li {
+        margin: 0 3px;
+    }
+
+    .mobile_icons .fas {
+        font-size: 16px;
+    }
+
+    .mobileMenu .navbar-brand img {
+        max-height: 30px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+    .breadcrumb_item.d-flex.d-md-none li {
+        font-size: 10px;
+    }
+
+    .breadcrumb_title h2 {
+        font-size: 1.2rem;
+    }
+
+    .mobile_icons .fas {
+        font-size: 14px;
+    }
+
+    .mobile_icons ul li {
+        margin: 0 2px;
+    }
+}
+
+/* Mobile cart badge improvements */
+@media (max-width: 991.98px) {
+    .mobile_icons .badge {
+        font-size: 10px;
+        padding: 2px 5px;
+        min-width: 16px;
+        height: 16px;
+        line-height: 12px;
+    }
+}
+
+/* Mobile offcanvas menu improvements */
+@media (max-width: 991.98px) {
+    .offcanvas {
+        width: 280px !important;
+    }
+
+    .offcanvas-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .offcanvas-body {
+        padding: 20px;
+    }
+
+    .mobile_menu_icons {
+        margin-top: 20px !important;
+    }
+
+    .mobile_menu_icons .fas {
+        font-size: 20px;
+        color: #333;
+        margin: 0 10px;
+    }
+}
+
+/* Category placeholder for missing images */
+.category-placeholder {
+    position: relative;
+    width: 100%;
+    padding-top: 75%;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, #56c596, #4caf50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+    overflow: hidden;
+}
+
+.category-placeholder__icon {
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    font-size: 2.4rem;
+    opacity: 0.35;
+}
+
+.category-placeholder__text {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 575.98px) {
+    .category-placeholder {
+        padding-top: 70%;
+        border-radius: 16px;
+    }
+
+    .category-placeholder__icon {
+        font-size: 2rem;
+    }
+
+    .category-placeholder__text {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .category-placeholder {
+        padding-top: 65%;
+    }
+
+    .category-placeholder__text {
+        font-size: 2rem;
+    }
+}

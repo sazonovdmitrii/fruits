@@ -1,0 +1,217 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Каталог - Organic Fruits{% endblock %}
+
+{% block body %}
+<!-- body wrap start -->
+<div class="body-wrap overflow-hidden">
+    <!-- back-to-top start -->
+    <div class="back-to-top">
+        <a href="#!"><i class="fas fa-arrow-up"></i></a>
+    </div>
+    <!-- back-to-top end -->
+
+    {% include 'components/header.html.twig' with {'active_menu': 'categories'} %}
+
+    <!-- main body start -->
+    <main class="main_body">
+        {% include 'components/breadcrumbs.html.twig' with {
+            'title': 'Категории',
+            'category': null,
+            'product': null
+        } %}
+
+        <!-- categories section start -->
+        <section class="category_section sec_ptb_100 position-relative overflow-hidden clearfix" data-aos="fade-up" data-aos-duration="2000">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="category_section_title text-center mb-5">
+                            <h2 class="category_section_heading">Наши категории</h2>
+                            <p class="category_section_desc">Выберите из широкого ассортимента органических фруктов</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for category in categories %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                            <div class="category_section_item text-center" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="{{ loop.index * 100 }}">
+                                <div class="category_section_thumb">
+                                    <a href="{{ path('category_show', {'id': category.id}) }}">
+                                        {% if category.image %}
+                                            <img src="{{ asset('uploads/categories/' ~ category.image) }}" alt="{{ category.name }}">
+                                        {% else %}
+                                            <div class="category-placeholder">
+                                                <span class="category-placeholder__icon">
+                                                    <i class="fas fa-apple-alt"></i>
+                                                </span>
+                                                <span class="category-placeholder__text">{{ category.name|first|upper }}</span>
+                                            </div>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="category_section_content">
+                                    <h4 class="category_section_title_item">
+                                        <a href="{{ path('category_show', {'id': category.id}) }}">{{ category.name }}</a>
+                                    </h4>
+                                    {% if category.description %}
+                                        <p class="category_section_desc_item">{{ category.description|slice(0, 80) }}{% if category.description|length > 80 %}...{% endif %}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- categories section end -->
+    </main>
+    <!-- main body end -->
+
+    <!-- footer section start -->
+    <footer class="footer_section position-relative">
+        <div class="footer_section_wrap sec_top_space_50"
+            style="background-image: url({{ asset('assets/images/footer/footer.png') }})">
+            <div class="container">
+                <div class="footer_top_content d-flex flex-column flex-lg-row justify-content-between align-items-center">
+                    <div class="footer_top_logo">
+                        <a href="{{ path('home') }}">
+                            <img src="{{ asset('assets/images/logo/logo2.png') }}" alt="Organic Fruits">
+                        </a>
+                    </div>
+                    <div class="footer_top_subs position-relative">
+                        <input class="rounded-pill" type="search" name="search" placeholder="Ваш номер телефона">
+                        <a href="#!">
+                            <button type="button" class="btn custom_btn rounded-pill text-white position-absolute">
+                                Подписаться <i class="fas fa-long-arrow-alt-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="footer_top_social">
+                        <ul class="list-unstyled d-flex justify-content-end">
+                            <li class="me-3"><a href="#!"><i class="fab fa-twitter"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-instagram"></i></a></li>
+                            <li class="me-3"><a href="#!"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer_inner_content sec_space_xs_70">
+                    <div class="footer_inner_content_wrap">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_choose_content">
+                                    <div class="footer_inner_choose_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Почему выбирают нас</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_choose_desc pt-2">
+                                        <p>Мы предлагаем только свежие органические фрукты высшего качества, 
+                                        выращенные с заботой о природе и вашем здоровье.</p>
+                                    </div>
+                                    <div class="footer_inner_choose">
+                                        <a href="#!">
+                                            <button type="button" class="btn custom_btn rounded-pill px-4 text-white">
+                                                Подробнее <i class="fas fa-long-arrow-alt-right"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_info_content">
+                                    <div class="footer_inner_info_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Информация</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_info_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">О нас</a></li>
+                                            <li><a href="#!">Информация о доставке</a></li>
+                                            <li><a href="#!">Политика конфиденциальности</a></li>
+                                            <li><a href="#!">Условия использования</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_acct_content">
+                                    <div class="footer_inner_acct_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Мой аккаунт</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_acct_item pt-2">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#!">Мой аккаунт</a></li>
+                                            <li><a href="#!">Корзина покупок</a></li>
+                                            <li><a href="#!">Список желаний</a></li>
+                                            <li><a href="#!">Отслеживание заказа</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="footer_inner_cotc_content">
+                                    <div class="footer_inner_ctc_title">
+                                        <h4>
+                                            <a href="#!" class="text-white">Контакты</a>
+                                        </h4>
+                                    </div>
+                                    <div class="footer_inner_ctc_info pt-2 text-white">
+                                        <p>Адрес: <font>Краснодар, ул. Красная, 2</font></p>
+                                        <p>Email: <font>info@organicfruits.ru</font></p>
+                                        <p>Телефон: <font>+7 (999) 123-45-67</font></p>
+                                        <div class="footer_inner_payment_ctc">
+                                            <div class="footer_inner_payment_title">
+                                                <h5 class="text-white">Принимаем к оплате</h5>
+                                            </div>
+                                            <div class="footer_inner_payment_thumb pt-3">
+                                                <a href="#!">
+                                                    <img src="{{ asset('assets/images/payment/payment.png') }}" alt="Способы оплаты">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bootom_content">
+                    <div class="footer_bootom_wrap">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_copyright">
+                                        <p>Copyright © 2024 <font>ORGANIC FRUITS</font> Inc. Все права защищены.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="footer_bootom_privicy_cont d-flex justify-content-center align-items-center">
+                                        <div class="footer_bootom_privicy pe-5">
+                                            <a href="#!">
+                                                <p class="priv position-relative">Политика конфиденциальности</p>
+                                            </a>
+                                        </div>
+                                        <div class="footer_bootom_privicy pe-5">
+                                            <p class="position-relative">Условия использования</p>
+                                        </div>
+                                        <div class="footer_bootom_refunds">
+                                            <p>Продажи и возвраты</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+</div>
+<!-- body wrap end -->
+{% endblock %}
